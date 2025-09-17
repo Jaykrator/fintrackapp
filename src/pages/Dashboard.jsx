@@ -5,33 +5,35 @@ export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='flex min-h-screen bg-gray-50'>
-      {/* Sidebar (hidden on mobile) */}
-      <aside className='hidden md:block w-64 bg-teal-600 text-white p-6 space-y-6'>
-        <h2 className='text-2xl font-bold'>FinTrack</h2>
-        <nav className='space-y-3'>
-          <a href='/dashboard' className='block hover:text-indigo-300'>
-            <BarChart3 className='inline w-5 h-5 mr-2' />
-            Dashboard
-          </a>
-          <a href='/transactions' className='block hover:text-indigo-300'>
-            <CreditCard className='inline w-5 h-5 mr-2' />
-            Transactions
-          </a>
-          <a href='/goals' className='block hover:text-indigo-300'>
-            <Target className='inline w-5 h-5 mr-2' />
-            Goals
-          </a>
-        </nav>
-      </aside>
-
-      {/* Mobile Navbar */}
-      <div className='md:hidden fixed top-0 left-0 w-full bg-teal-600 text-white flex justify-between items-center p-4 z-10'>
+    <div className='min-h-screen bg-gray-50'>
+      {/* Top Navbar */}
+      <nav className='fixed top-0 left-0 w-full bg-teal-600 text-white flex justify-between items-center p-4 z-10'>
         <h2 className='text-xl font-bold'>FinTrack</h2>
-        <button onClick={() => setIsOpen(!isOpen)}>
+        <div className='hidden md:flex space-x-6'>
+          <a
+            href='/dashboard'
+            className='hover:text-indigo-300 flex items-center gap-2'
+          >
+            <BarChart3 className='w-5 h-5' /> Dashboard
+          </a>
+          <a
+            href='/transactions'
+            className='hover:text-indigo-300 flex items-center gap-2'
+          >
+            <CreditCard className='w-5 h-5' /> Transactions
+          </a>
+          <a
+            href='/goals'
+            className='hover:text-indigo-300 flex items-center gap-2'
+          >
+            <Target className='w-5 h-5' /> Goals
+          </a>
+        </div>
+        {/* Mobile Menu Button */}
+        <button onClick={() => setIsOpen(!isOpen)} className='md:hidden'>
           <Menu className='w-6 h-6' />
         </button>
-      </div>
+      </nav>
 
       {/* Mobile Dropdown Menu */}
       {isOpen && (
@@ -49,7 +51,7 @@ export default function Dashboard() {
       )}
 
       {/* Main Content */}
-      <main className='flex-1 p-8 mt-12 md:mt-0'>
+      <main className='p-8 mt-16'>
         <h1 className='text-3xl font-bold text-gray-800 mb-6'>
           Dashboard Overview
         </h1>
